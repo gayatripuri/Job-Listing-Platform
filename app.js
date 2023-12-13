@@ -21,11 +21,7 @@ app.get("/health", (req, res) => {
 
 app.use("/", authRouter);
 
-app.use((req, res, next) => {
-  const error = new Error("Not found");
-  error.status = 404;
-  next(error);
-});
+
 
 // Error handler middleware
 app.use((err, req, res, next) => {

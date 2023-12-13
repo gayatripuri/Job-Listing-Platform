@@ -1,12 +1,13 @@
 const User = require("../Models/user");
+const jobListing=require("../Models/joblistig")
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-require('dotenv').config();
+require("dotenv").config();
 
 exports.register = async (req, res) => {
   try {
     const { name, email, mobile, password } = req.body;
-     console.log(res.body)
+    console.log(res.body);
     // Check if the required fields are provided
     if (!(name || email || mobile || password)) {
       return res
@@ -80,6 +81,52 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message || "Failed to login" });
+  }
+};
 
+exports.addJob = async (req, res) => {
+
+  try {
+    const {
+      companyName,
+      addLogoURL,
+      jobPosition,
+      monthlySalary,
+      jobType,
+      remoteOffice,
+      jobLocation,
+      jobDescription,
+      aboutCompany,
+      skillsRequired,
+      information,
+    } = req.body;
+
+    console.log(req.userId);
+
+    const job = new jobListing({
+      companyName,
+      addLogoURL,
+      jobPosition,
+      monthlySalary,
+      jobType,
+      remoteOffice,
+      jobLocation,
+      jobDescription,
+      aboutCompany,
+      skillsRequired,
+      information,
+      user: req.userId,
+    });
+
+    await job.save();
+    res.status(201).json({
+      success: true,
+      message: "Job added Successfully",
+    });
+  } catch (error) {
+   // next(new ErrorHandler(error.message, 500));
+   //res.send("smtg went wrong")
+   console.log(error.message)
+   res.status(500).send("smtg wrong")
   }
 };
