@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 
 const authRouter = require("./Routes/authenticationRoute");
+const jobRouter = require("./routes/jobRoute");
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/", authRouter);
-
+app.use("/", jobRouter);
 
 
 // Error handler middleware
