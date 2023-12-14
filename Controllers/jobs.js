@@ -124,3 +124,22 @@ exports.getSpecificJob = async (req, res, next) => {
       next(new ErrorHandler(error.message, 500));
   }
 };
+
+
+
+exports.getJobDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const job = await jobListing.findById(id);
+
+    if (!job) {
+      return res.status(404).json({ success: false, message: "Job not found" });
+    }
+
+    res.status(200).json({ success: true, job });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ success: false, message: "Something went wrong" });
+  }
+};

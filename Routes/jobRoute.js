@@ -1,5 +1,5 @@
 const express = require("express");
-const {addJob,editJob,getSpecificJob } = require("../Controllers/jobs");
+const {addJob,editJob,getSpecificJob,getJobDetails} = require("../Controllers/jobs");
 const isAuthenticated = require('../middleware/auth')
 
 
@@ -10,5 +10,6 @@ jobRouter
 
   .put('/editJob/:id', isAuthenticated , editJob)
   .post('/getSpecificJob', isAuthenticated , getSpecificJob)
+  .get('/jobs/:id',  isAuthenticated,getJobDetails);
 
   module.exports = jobRouter;
