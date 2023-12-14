@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 
 const authRouter = require("./Routes/authenticationRoute");
-const jobRouter = require("./routes/jobRoute");
+const jobRouter = require("./Routes/jobRoute");
 
 const app = express();
 
