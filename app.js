@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const cors = require('cors');
  require("dotenv").config();
 const mongoose = require("mongoose");
 
@@ -9,7 +9,7 @@ const authRouter = require("./Routes/authenticationRoute");
 const jobRouter = require("./Routes/jobRoute");
 
 const app = express();
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

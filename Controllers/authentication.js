@@ -41,6 +41,7 @@ exports.register = async (req, res) => {
       expiresIn: 600,
     });
     res.status(201).json({
+      success: true,  // Indicate success
       message: "User registered successfully",
       name: user.name,
       
@@ -82,6 +83,18 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message || "Failed to login" });
+  }
+};
+
+exports.logout = async (req,res) =>{
+  try {
+    
+    localStorage.removeItem("token");
+
+    res.status(200).json({ message: "Logout successful" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to logout" });
   }
 };
 

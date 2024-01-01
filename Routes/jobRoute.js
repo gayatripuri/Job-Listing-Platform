@@ -1,5 +1,5 @@
 const express = require("express");
-const {addJob,editJob,getSpecificJob,getJobDetails} = require("../Controllers/jobs");
+const {addJob,editJob,getSpecificJob,getJobDetails,getAllJobs} = require("../Controllers/jobs");
 const isAuthenticated = require('../middleware/auth')
 
 
@@ -9,7 +9,8 @@ jobRouter
   .post("/add-job", isAuthenticated, async (req, res) => await addJob(req, res))
 
   .put('/editJob/:id', isAuthenticated , editJob)
-  .post('/getSpecificJob', isAuthenticated , getSpecificJob)
-  .get('/jobs/:id',  isAuthenticated,getJobDetails);
+  .post('/getSpecificJob',  getSpecificJob)
+  .get('/jobs/:id',  getJobDetails)
+  .get('/getalljobs',getAllJobs );
 
   module.exports = jobRouter;

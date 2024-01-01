@@ -143,3 +143,15 @@ exports.getJobDetails = async (req, res) => {
     res.status(500).json({ success: false, message: "Something went wrong" });
   }
 };
+
+
+exports.getAllJobs = async (req, res, next) => {
+  const jobs = await jobListing.find({})
+  if(!jobs){
+    return res.status(404).json({ success: false, message: "Job not found" });
+  }
+  res.status(200).json({
+      success : true,
+      jobs
+  })
+}
