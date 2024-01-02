@@ -9,10 +9,16 @@ const authRouter = require("./Routes/authenticationRoute");
 const jobRouter = require("./Routes/jobRoute");
 
 const app = express();
-app.use(cors());
+app.use(cors({origin: '*',
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  console.log(res);
+  res.json({ status: "Success" });
+});
 
 // Health check endpoint
 app.get("/health", (req, res) => {
