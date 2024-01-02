@@ -4,7 +4,7 @@ const app = require("./app");
 
 
 mongoose
-  .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true,serverSelectionTimeoutMS: 5000, })
   .then(() => {
     console.log('Database connection is successful');
   })
