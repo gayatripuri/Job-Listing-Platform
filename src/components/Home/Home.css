@@ -1,0 +1,12 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  
+  .job-container {
+    max-height: 400px; 
+    overflow-y: auto;
+  }

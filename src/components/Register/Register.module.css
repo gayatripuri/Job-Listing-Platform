@@ -26,13 +26,19 @@
     margin-top: 2vh;
   }
   
-  .registerForm > input {
+  .registerForm >div>  input {
     height: 6vh;
     width: 30vw;
     border-radius: 1vh;
     border-color: grey;
     font-size: 2.5vh;
     padding: 0 1rem;
+  }
+  .registerForm > div > p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: left;
+    color: red;
   }
   .registerCheckbox{
     margin-top: 3vh;
