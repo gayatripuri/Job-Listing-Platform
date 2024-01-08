@@ -6,11 +6,13 @@ const isAuthenticated = require('../middleware/auth')
 const jobRouter = express.Router();
 jobRouter
   
-  .post("/add-job", isAuthenticated, async (req, res) => await addJob(req, res))
+  .post("/add-job", isAuthenticated,  addJob)
+ 
 
   .put('/editJob/:id', isAuthenticated , editJob)
-  .post('/getSpecificJob',  getSpecificJob)
+  .get('/getSpecificJob',  getSpecificJob)
+
   .get('/jobs/:id',  getJobDetails)
-  .get('/getalljobs',getAllJobs );
+  .get('/getalljobs', getAllJobs );
 
   module.exports = jobRouter;

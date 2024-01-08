@@ -10,7 +10,7 @@ exports.addJob = async (req, res) => {
         jobPosition,
         monthlySalary,
         jobType,
-        remoteOffice,
+        remoteOnsite,
         jobLocation,
         jobDescription,
         aboutCompany,
@@ -18,7 +18,7 @@ exports.addJob = async (req, res) => {
         information,
       } = req.body;
   
-      console.log(req.userId);
+      // console.log(req.body, 'req.body');
   
       const job = new jobListing({
         companyName,
@@ -26,22 +26,23 @@ exports.addJob = async (req, res) => {
         jobPosition,
         monthlySalary,
         jobType,
-        remoteOffice,
+        remoteOnsite,
         jobLocation,
         jobDescription,
         aboutCompany,
         skillsRequired,
-        information,
-        user: req.userId,
+        information
       });
-  
-      await job.save();
+
+  // console.log("job", job)
+
+     await job.save();
       res.status(201).json({
         success: true,
         message: "Job added Successfully",
       });
     } catch (error) {
-     // next(new ErrorHandler(error.message, 500));
+      //next(new ErrorHandler(error.message, 500));
      //res.send("smtg went wrong")
      console.log(error.message)
      res.status(500).send("smtg wrong")
@@ -103,6 +104,7 @@ exports.editJob = async (req, res) => {
 
 exports.getSpecificJob = async (req, res, next) => {
   try {
+    console.log(req.params, "reqst");
       const { jobPosition, skillsRequired } = req.body;
 
       const jobs = await jobListing.find({
@@ -121,7 +123,7 @@ exports.getSpecificJob = async (req, res, next) => {
           jobs
       });
   } catch (error) {
-      next(new ErrorHandler(error.message, 500));
+     // next(new ErrorHandler(error.message, 500));
   }
 };
 

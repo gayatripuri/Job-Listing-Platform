@@ -12,6 +12,7 @@ const authenticateUser = (req, res, next) => {
     console.log('Token:', token);
     const decoded = jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
     req.userId = decoded.userId;
+    console.log("heree ", req.userId)
     next();
   } catch (error) {
     console.error("Token verification error:", error);

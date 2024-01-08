@@ -38,7 +38,7 @@ exports.register = async (req, res) => {
     // Generate and return the JWT token after sign up
     const user = await User.findOne({ email });
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: 600,
+      expiresIn: 6000,
     });
     res.status(201).json({
       success: true,  // Indicate success
@@ -75,7 +75,7 @@ exports.login = async (req, res) => {
     }
     // Generate and return the JWT token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: 600,
+      expiresIn: 6000,
     });
     res
       .status(200)

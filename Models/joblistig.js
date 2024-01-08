@@ -22,7 +22,7 @@ const jobListingSchema = new Schema({
     type: String,
     required: [true, "Job type is required"],
   },
-  remoteOffice: {
+  remoteOnsite: {
     type: String,
     required: [true, "Remote/Office is required"],
   },
