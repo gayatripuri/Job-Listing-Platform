@@ -16,7 +16,7 @@ function App() {
       <Provider>
         <BrowserRouter>
           <Routes>
-          <Route
+            <Route
               path="/"
               element={
                 <>
@@ -40,9 +40,6 @@ function App() {
             <Route path="/editJob/:id" element={<EditJob />} />
             <Route path="/404" element={<Error404 />} />
             <Route path="*" element={<Error404 />} />
-            
-           
-           
           </Routes>
         </BrowserRouter>
       </Provider>

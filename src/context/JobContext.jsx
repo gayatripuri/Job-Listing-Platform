@@ -23,7 +23,8 @@ const Provider = ({ children }) => {
     setJobId,
     loading,
     setLoading,
-     userName, setUserName,
+    userName,
+    setUserName,
   };
 
   return (

@@ -14,40 +14,36 @@ const JobDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [jobDetails, setJobDetails] = useState({});
-  
+
   const { loggedIn, setLoading, loading } = useJobContext();
 
-  
+  const getJobDetails = () => {
+    console.log("Navigating to Edit Job page");
+    navigate(`/editjob/${id}`);
+  };
 
+  useEffect(() => {
+    if (!id) return;
+    console.log("Fetching job details for ID:", id);
+    setLoading(true);
 
-const getJobDetails = () => {
-  console.log("Navigating to Edit Job page");
-  navigate(`/editjob/${id}`);
-};
-
-useEffect(() => {
-  if(!id) return;
-  console.log("Fetching job details for ID:", id);
-  setLoading(true);
-
-  axios
-    .get(`${BASEURL}/jobs/` + id)
-    .then((response) => {
-      console.log("Job details fetched successfully:", response.data.jobListing);
-      setJobDetails(response.data.jobListing);
-      setLoading(false);
-    })
-    .catch((error) => {
-      console.error("Error fetching data: ", error);
-      navigate("/404");
-      setLoading(false);
-    });
-}, [id, navigate, setLoading]);
-
+    axios
+      .get(`${BASEURL}/jobs/` + id)
+      .then((response) => {
+        console.log("Job details fetched successfully:", response.data.job);
+        setJobDetails(response.data.job);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        navigate("/404");
+        setLoading(false);
+      });
+  }, [id, navigate, setLoading]);
 
   return (
     <div className="job__details__container">
-      {loading || !jobDetails? (
+      {loading || !jobDetails ? (
         <Loading />
       ) : (
         <>

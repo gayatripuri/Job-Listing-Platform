@@ -27,7 +27,7 @@ const Header = () => {
       {loggedIn ? (
         <div className="user__icon">
           <button onClick={logout}>Logout</button>
-          <span>Hello { userName}!</span>
+          <span>Hello {userName}!</span>
           <img
             src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
             alt=""

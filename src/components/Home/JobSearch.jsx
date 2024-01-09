@@ -51,26 +51,31 @@ const JobSearch = () => {
   };
 
   const getJobListings = (_searchTerm, _selectedSkills) => {
-    console.log('_searchTerm:--', _searchTerm, '_selectedSkills:----', _selectedSkills);
+    console.log(
+      "_searchTerm:--",
+      _searchTerm,
+      "_selectedSkills:----",
+      _selectedSkills
+    );
 
-    axios.get(`${BASEURL}/getSpecificJob`, {
-      params: {
-        searchTerm: _searchTerm,
-        skills: _selectedSkills.join(","),
-      },
-    })
-    .then((response) => {
-      console.log(response.data);
-      setJobListings(response.data.jobListings);
-    })
-    .catch((error) => {
-      console.error("Error fetching data: ", error);
-    });
-  }; 
-  
-  
+    axios
+      .get(`${BASEURL}/getSpecificJob`, {
+        params: {
+          searchTerm: _searchTerm,
+          skills: _selectedSkills.join(","),
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setJobListings(response.data.jobListings);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
+  };
+
   // const getJobListings = useCallback(
-  
+
   //   debounce((_searchTerm, _selectedSkills) => {
   //     axios
   //       .get(`${BASEURL}/getSpecificJob`, {
@@ -88,9 +93,8 @@ const JobSearch = () => {
   //       });
   //   }, 200),
   //   []
-    
-  // );
 
+  // );
 
   return (
     <div className="job-search">
@@ -107,13 +111,14 @@ const JobSearch = () => {
       </form>
       <div className="job__search__footer">
         <div className="select-skills">
-        <select value={selectedSkills.length > 0 ? selectedSkills[0] : ""} onChange={handleSelectChange}>
-          
+          <select
+            value={selectedSkills.length > 0 ? selectedSkills[0] : ""}
+            onChange={handleSelectChange}
+          >
             <option value="">Select Skill</option>
             {skills.map((skill, index) => (
-  <option key={index}>{skill}</option>
-))}
-            
+              <option key={index}>{skill}</option>
+            ))}
           </select>
 
           <div className="selected-skills">

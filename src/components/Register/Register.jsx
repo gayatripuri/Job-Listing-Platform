@@ -9,12 +9,12 @@ import useJobContext from "../../hooks/useJobContext";
 import BASEURL from "../../constants/baseurl";
 
 const Register = () => {
-  const [userName,setUserName]=useState("");
+  const [userName, setUserName] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
-  const [registrationSuccess, setRegistrationSuccess] = useState(false); 
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -64,9 +64,9 @@ const Register = () => {
     navigate("/login");
   };
 
-  const addjob=()=>{
-    navigate("/addjob")
-  }
+  const addjob = () => {
+    navigate("/addjob");
+  };
   return (
     <div className={styles.registerPage}>
       <div className={styles.registerPageLeft}>
@@ -100,7 +100,7 @@ const Register = () => {
                 name="mobile"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-                type="text" 
+                type="text"
                 placeholder="Mobile"
               />
             </div>
@@ -117,7 +117,8 @@ const Register = () => {
 
           <div className={styles.registerCheckbox}>
             <input type="checkbox" />
-            By creating an account, I agree to our terms of use and privacy policy
+            By creating an account, I agree to our terms of use and privacy
+            policy
           </div>
 
           <div className={styles.registerBtn}>

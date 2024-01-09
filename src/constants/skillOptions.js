@@ -4,16 +4,22 @@ const skills = [
     "ReactJS",
     "NodeJS",
     "Python",
-    "Typography",
+    "Front-End Development",
+    "Redux.js",
     "Agile Methodologies",
+    "Responsive Web Design",
     "Product Management",
     "Software Developement",
     "PHP",
     "SQL",
+    "TypeScript",
     "JavaScript",
     "Data Analysis",
     "UI Design",
     "Machine Learning",
+    "User Interface Design",
+    "Amazon Web Services (AWS)",
+    "Communication",
 ]
 
 export default skills;

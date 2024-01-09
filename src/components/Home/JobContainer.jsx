@@ -3,7 +3,7 @@ import "./JobContainer.css";
 import JobBox from "./JobBox";
 import useJobContext from "../../hooks/useJobContext";
 import NoResultsFound from "./NoResultsFound";
-import Loadings from "../../Loading/Loading"
+import Loadings from "../../Loading/Loading";
 
 const JobContainer = () => {
   const { jobListings, loading } = useJobContext();

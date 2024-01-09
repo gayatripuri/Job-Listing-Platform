@@ -25,17 +25,17 @@ const EditJob = () => {
     axios
       .get(`${BASEURL}/jobs/${id}`)
       .then((response) => {
-        console.log("response", response.data.jobListing);
-        setCompanyName(response.data.jobListing.companyName);
-        setAddLogoURL(response.data.jobListing.addLogoURL);
-        setJobPosition(response.data.jobListing.jobPosition);
-        setMonthlySalary(response.data.jobListing.monthlySalary);
-        setJobType(response.data.jobListing.jobType);
-        setRemoteOnsite(response.data.jobListing.remoteOnsite);
-        setJobLocation(response.data.jobListing.jobLocation);
-        setJobDescription(response.data.jobListing.jobDescription);
-        setAboutCompany(response.data.jobListing.aboutCompany);
-        setSkillsRequired(response.data.jobListing.skillsRequired);
+        console.log("response", response.data.job);
+        setCompanyName(response.data.job.companyName);
+        setAddLogoURL(response.data.job.addLogoURL);
+        setJobPosition(response.data.job.jobPosition);
+        setMonthlySalary(response.data.job.monthlySalary);
+        setJobType(response.data.job.jobType);
+        setRemoteOnsite(response.data.job.remoteOnsite);
+        setJobLocation(response.data.job.jobLocation);
+        setJobDescription(response.data.job.jobDescription);
+        setAboutCompany(response.data.job.aboutCompany);
+        setSkillsRequired(response.data.job.skillsRequired);
       })
       .catch((error) => {
         navigate("/login");
@@ -202,12 +202,10 @@ const EditJob = () => {
 
           <div className={styles.job__input}>
             <label htmlFor="jobLocation">Job Location</label>
-            <input
-              type="text"
+            <textarea
               placeholder="Job Location"
               value={jobLocation}
               onChange={(e) => setJobLocation(e.target.value)}
-              disabled={remoteOnsite === "Remote"}
             />
           </div>
 
@@ -237,11 +235,11 @@ const EditJob = () => {
             />
           </div>
           <div className={styles.job__buttons}>
-            <button onClick={cancelUpdate} className="cancel__updateJob">
+            <button onClick={cancelUpdate} className={styles.cancel__updateJob}>
               Cancel
             </button>
-            <button type="submit" className="update__job__button">
-              Update
+            <button type="submit" className={styles.update__job__button}>
+              Save
             </button>
           </div>
         </form>

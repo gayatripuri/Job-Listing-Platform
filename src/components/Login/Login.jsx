@@ -1,7 +1,7 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Login.module.css";
-import {useNavigate} from 'react-router-dom';
-import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,34 +26,34 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const login=()=>{
+  const login = () => {
     axios
-    .post(`${BASEURL}/login`, {
-      email,
-      password,
-    })
-    .then((response) => {
-      const { token, expirationTime } = response.data;
-      localStorage.setItem("name", response.data.name);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("tokenExpiration", expirationTime);
-      
-      navigate("/");
-    })
-    .catch((error) => {
-      toast.error("Incorrect Email or Password. Try again.", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        draggable: true,
+      .post(`${BASEURL}/login`, {
+        email,
+        password,
+      })
+      .then((response) => {
+        const { token, expirationTime } = response.data;
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("tokenExpiration", expirationTime);
+
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error("Incorrect Email or Password. Try again.", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+        });
+        console.error("Login failed", error); // Handle any error response if needed
+      })
+      .finally(() => {
+        setLoading(false);
       });
-      console.error("Login failed", error); // Handle any error response if needed
-    })
-    .finally(() => {
-      setLoading(false);
-    });
-  }
+  };
   useEffect(() => {
     // Check token expiration on component mount
     const tokenExpiration = localStorage.getItem("tokenExpiration");
@@ -72,12 +72,16 @@ const Login = () => {
         </div>
 
         <div className={styles.loginForm}>
-          <input type="email"  onChange={handleEmail} placeholder="Email" />
-          <input type="password"  onChange={handlePassword} placeholder="Password" />
+          <input type="email" onChange={handleEmail} placeholder="Email" />
+          <input
+            type="password"
+            onChange={handlePassword}
+            placeholder="Password"
+          />
         </div>
 
         <div className={styles.loginBtn}>
-        <button id="login__signin" onClick={login} disabled={loading}>
+          <button id="login__signin" onClick={login} disabled={loading}>
             {loading ? "Loading..." : "Sign In"}
           </button>
         </div>

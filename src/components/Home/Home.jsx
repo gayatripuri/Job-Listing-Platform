@@ -37,11 +37,11 @@ const Home = () => {
 
   return (
     <div className="home">
-    <JobSearch />
-    <div className="job-container">
-      <JobContainer />
+      <JobSearch />
+      <div className="job-container">
+        <JobContainer />
+      </div>
     </div>
-  </div>
   );
 };
 
