@@ -4,11 +4,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  bottom: 2vh;
-  left: 10vw;
+ 
+  margin: 0 auto;
+  max-width: 80%;
   color: #595959;
   font-weight: 500;
+   
+  overflow-y: auto; 
 }
 
 .job__details__upper {
@@ -16,6 +18,7 @@
   width: 70vw;
   margin-bottom: 5vh;
   display: flex;
+  margin-top: 20px;
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -34,12 +37,11 @@
   height: auto;
   width: 70vw;
   display: flex;
+  
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   background-color: white;
-  -webkit-box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
-  -moz-box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
   box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
 }
 
@@ -53,7 +55,7 @@
   width: 70vw;
   margin-left: 2vw;
   margin-right: 2vw;
-  margin-top: 2vh;
+  margin-top: 4vh;
 }
 
 .job__details__second__section {
@@ -64,6 +66,7 @@
   width: 70vw;
   margin-left: 2vw;
   margin-right: 2vw;
+  
 }
 
 .job__details__second__section > span {
@@ -95,6 +98,7 @@
   font-weight: 700;
   margin-left: 2vw;
   margin-right: 2vw;
+ 
 }
 
 .job__details__fourth__section {
@@ -105,7 +109,7 @@
   width: 70vw;
   margin-left: 2vw;
   margin-right: 2vw;
-  margin-top: 2vh;
+  margin-top: 4vh;
 }
 
 .job__details__fourth__section__left {
@@ -174,17 +178,20 @@
   text-align: left;
   margin-left: 2vw;
   margin-right: 2vw;
+  margin-top: 5vh;
 }
 
 .job__details__sixth__section {
   text-align: left;
   margin-left: 2vw;
   margin-right: 2vw;
+  margin-top: 5vh;
 }
 
 .job__details__seventh__section {
   text-align: left;
   margin-left: 2vw;
+  margin-top: 5vh;
 }
 
 .job__details__seventh__section__skills {

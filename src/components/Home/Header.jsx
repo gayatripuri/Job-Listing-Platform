@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import useJobContext from "../../hooks/useJobContext";
-
+import img from "../../assets/images/img.png";
 const Header = () => {
   const navigate = useNavigate();
   const { loggedIn, setLoggedIn } = useJobContext();
@@ -29,7 +29,7 @@ const Header = () => {
           <button onClick={logout}>Logout</button>
           <span>Hello {userName}!</span>
           <img
-            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+            src={img}
             alt=""
           />
         </div>

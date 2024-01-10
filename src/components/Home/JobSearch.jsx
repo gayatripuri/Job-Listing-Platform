@@ -1,10 +1,10 @@
-import React, { useCallback, useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./JobSearch.css";
 import searchIcon from "../../assets/logo/searchIcon.png";
 import useJobContext from "../../hooks/useJobContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import debounce from "lodash.debounce";
+
 import skills from "../../constants/skillOptions";
 import BASEURL from "../../constants/baseurl";
 
@@ -16,11 +16,12 @@ const JobSearch = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-   
   };
-  useEffect(()=>{
+  useEffect(() => {
     getJobListings(searchTerm, selectedSkills);
-  },[searchTerm,selectedSkills.length])
+    // eslint-disable-next-line
+  }, [searchTerm, selectedSkills]);
+
   const handleSelectChange = (e) => {
     const skill = e.target.value;
     if (skill && !selectedSkills.includes(skill)) {

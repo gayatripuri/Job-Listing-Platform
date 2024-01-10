@@ -108,10 +108,7 @@ const JobDetails = () => {
                 })}
               </div>
             </div>
-            <div className="job__details__eighth__section">
-              <h1>Additional Information</h1>
-              <p>Number of openings 2</p>
-            </div>
+            
           </div>
         </>
       )}
