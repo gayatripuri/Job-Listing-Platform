@@ -56,7 +56,10 @@ const EditJob = () => {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
+
+    
     // Prepare the data to be sent in the POST request
     const postData = {
       companyName,
@@ -71,6 +74,7 @@ const EditJob = () => {
       skillsRequired: skillsRequired.map((skill) => skill.trim()),
     };
 
+    console.log("Submitting data:", postData); 
     // Send the POST request
     axios
       .put(`${BASEURL}/job-posting/${id}`, postData, {
@@ -238,7 +242,7 @@ const EditJob = () => {
             <button onClick={cancelUpdate} className={styles.cancel__updateJob}>
               Cancel
             </button>
-            <button type="submit" className={styles.update__job__button}>
+            <button type="submit"  className={styles.update__job__button}>
               Save
             </button>
           </div>

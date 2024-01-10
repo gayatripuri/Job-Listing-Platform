@@ -5,8 +5,8 @@ import useJobContext from "../../hooks/useJobContext";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { loggedIn, setLoggedIn, userName } = useJobContext();
-
+  const { loggedIn, setLoggedIn } = useJobContext();
+  const userName = localStorage.getItem("name");
   const loginPage = () => {
     navigate("/login");
   };

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState ,useEffect} from "react";
 import "./JobSearch.css";
 import searchIcon from "../../assets/logo/searchIcon.png";
 import useJobContext from "../../hooks/useJobContext";
@@ -16,9 +16,11 @@ const JobSearch = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    getJobListings(searchTerm, selectedSkills);
+   
   };
-
+  useEffect(()=>{
+    getJobListings(searchTerm, selectedSkills);
+  },[searchTerm,selectedSkills.length])
   const handleSelectChange = (e) => {
     const skill = e.target.value;
     if (skill && !selectedSkills.includes(skill)) {
@@ -67,7 +69,7 @@ const JobSearch = () => {
       })
       .then((response) => {
         console.log(response.data);
-        setJobListings(response.data.jobListings);
+        setJobListings(response.data.jobs);
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);

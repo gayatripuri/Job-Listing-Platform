@@ -59,7 +59,7 @@
 
 .add__job__btn {
   height: 6vh;
-  width: 15vw;
+  width: 10vw;
   border-radius: 1vh;
   border: none;
   background-color: #ed5353;
@@ -104,7 +104,13 @@
   border: none;
   margin-left: 0.5vw;
 }
-
+.clear__skills{
+  height: 6vh;
+  width: 8vw;
+  border-radius: 1vh;
+  border: none;
+  font-size: 0.8rem;
+}
 .select-skills > button {
   background-color: transparent;
   color: #ff6b6b;

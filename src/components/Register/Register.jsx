@@ -40,7 +40,7 @@ const Register = () => {
         });
         setUserName(res.data.name);
         setTimeout(() => {
-          navigate("/login");
+          navigate("/");
         }, 2000);
       })
       .catch((err) => {
