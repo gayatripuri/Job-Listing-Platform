@@ -34,7 +34,7 @@ exports.addJob = async (req, res) => {
         information
       });
 
-  // console.log("job", job)
+  console.log("job", job)
 
      await job.save();
       res.status(201).json({
@@ -55,13 +55,14 @@ exports.addJob = async (req, res) => {
 exports.editJob = async (req, res) => {
   try {
     const { id } = req.params;
+   // console.log("Received ID:", id);
     const {
       companyName,
       addLogoURL,
       jobPosition,
       monthlySalary,
       jobType,
-      remoteOffice,
+      remoteOnsite,
       jobLocation,
       jobDescription,
       aboutCompany,
@@ -69,13 +70,15 @@ exports.editJob = async (req, res) => {
       information,
     } = req.body;
 
+    console.log("Received data:", req.body); 
+
     const updatedFields = {
       companyName,
       addLogoURL,
       jobPosition,
       monthlySalary,
       jobType,
-      remoteOffice,
+      remoteOnsite,
       jobLocation,
       jobDescription,
       aboutCompany,
@@ -104,18 +107,20 @@ exports.editJob = async (req, res) => {
 
 exports.getSpecificJob = async (req, res, next) => {
   try {
-    console.log(req.params, "reqst");
-      const { jobPosition, skillsRequired } = req.body;
-
+    console.log(req.params, req.query, "reqst");
+     // const { jobPosition, skillsRequired } = req.body;
+      const skillsRequired=req.query.skills;
+      const jobPosition=req.query.searchTerm;
       const jobs = await jobListing.find({
           $or: [
-              { jobPosition: jobPosition },
+             { jobPosition: jobPosition },
               { skillsRequired: { $in: skillsRequired} }
           ]
       });
-
+console.log(jobs,"jobs")
       if (!jobs || jobs.length === 0) {
-          return next(new ErrorHandler("Jobs not found", 404));
+        //  return next(new ErrorHandler("Jobs not found", 404));
+        return res.status(404).send("jobs not found")
       }
 
       res.status(200).json({
@@ -123,6 +128,8 @@ exports.getSpecificJob = async (req, res, next) => {
           jobs
       });
   } catch (error) {
+    console.log(error.message,"error");
+    res.status(500).send("internal server error")
      // next(new ErrorHandler(error.message, 500));
   }
 };
