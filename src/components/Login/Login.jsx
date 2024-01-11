@@ -33,7 +33,7 @@ const Login = () => {
         password,
       })
       .then((response) => {
-        const { token, expirationTime } = response.data;
+        const { expirationTime } = response.data;
         localStorage.setItem("name", response.data.name);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("tokenExpiration", expirationTime);

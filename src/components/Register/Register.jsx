@@ -5,11 +5,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import userPageImage from "../../assets/images/loginimg.png";
-import useJobContext from "../../hooks/useJobContext";
+//import useJobContext from "../../hooks/useJobContext";
 import BASEURL from "../../constants/baseurl";
 
 const Register = () => {
-  const [userName, setUserName] = useState("");
+  const [ setUserName] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
